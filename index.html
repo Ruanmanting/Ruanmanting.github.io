@@ -86,12 +86,37 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>搭建hexo个人博客并部署到github pages</p>
-<h2 id="需要下载：git-node-js"><a href="#需要下载：git-node-js" class="headerlink" title="需要下载：git node.js"></a>需要下载：git node.js</h2>
+        <h2 id="搭建hexo个人博客并部署到github-pages"><a href="#搭建hexo个人博客并部署到github-pages" class="headerlink" title="搭建hexo个人博客并部署到github pages"></a>搭建hexo个人博客并部署到github pages</h2><ol>
+<li>需要用到的工具：git 、node.js</li>
+<li>node.js需到官网下载<a href="https://nodejs.org/en/" target="_blank" rel="noopener">node.js</a> （我已安装）</li>
+<li>hexo框架的安装需要借助npm包管理器，使用命令npm install -g hexo-cli 全局安装</li>
+</ol>
+<ul>
+<li><em>正式搭建hexo博客啦！！！</em></li>
+</ul>
+<ol>
+<li>可以先mkdir创建一个文件夹，cd进入文件夹目录里，命令hexo init初始化一个博客。</li>
+<li>启动博客：npm server</li>
+<li>新建一篇博客文章：hexo n “文章标题”，文章文件在/source/_posts/目录下（可以直接打开文件写，也可以使用git bash用vim命令打开文章）</li>
+<li>依次命令hexo clean清除缓存文件db.json和已生成的静态文件public、hexo g生成网站静态文件到默认设置的public文件夹、hexo server启动本地服务器预览</li>
+</ol>
+<ul>
+<li><em>将hexo部署到github pages！！！</em></li>
+</ul>
+<ol>
+<li>首先得有github账号</li>
+<li>在github上新建一个仓库create a new repository,重点！！！用户部署个人博客的github仓库的命名必须是 github昵称.github.io(比如我的昵称为ruanmanting，所以我的命名为ruanmanting.github.io)</li>
+<li>（在git bash下操作）在你的blog目录下安装一个插件npm install hexo-deployer-git –save</li>
+<li>安装完后配置一个重要的参数，找到blog目录下的_config.yml,打开后配置一些参数：如图<br><img src="1" alt="1.PNG">)<img src="2" alt="2.PNG"></li>
+<li>修改完成后部署到远端hexo d</li>
+<li>输入你的github账号和密码后开始往远端push</li>
+<li>push成功后输入你的网址即可啦！！！部署成功啦！！！<img src="3" alt="3.PNG"></li>
+</ol>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/02/15/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2%E6%96%87%E7%AB%A0/" data-id="ck6p5ywx40001ag57g3f1aorf" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/02/15/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2%E6%96%87%E7%AB%A0/" data-id="ck6ugg3h10001zc57f480brf6" class="article-share-link">Share</a>
       
       
     </footer>
@@ -140,7 +165,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/02/15/hello-world/" data-id="ck6p5ywwv0000ag57af6bakg5" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/02/15/hello-world/" data-id="ck6ugg3gr0000zc5739gbc7mq" class="article-share-link">Share</a>
       
       
     </footer>
