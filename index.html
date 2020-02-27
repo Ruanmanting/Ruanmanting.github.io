@@ -64,6 +64,55 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-在Vue中使用Markdown编辑器" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/02/27/%E5%9C%A8Vue%E4%B8%AD%E4%BD%BF%E7%94%A8Markdown%E7%BC%96%E8%BE%91%E5%99%A8/" class="article-date">
+  <time datetime="2020-02-27T11:27:09.000Z" itemprop="datePublished">2020-02-27</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/02/27/%E5%9C%A8Vue%E4%B8%AD%E4%BD%BF%E7%94%A8Markdown%E7%BC%96%E8%BE%91%E5%99%A8/">在Vue中使用Markdown编辑器</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>最近开发的博客系统中需要使用Markdown编辑器，参考网上一些资料后选用mavon-editor。而mavon-editor是一款基于Vue的Markdown编辑器，比较适合博客系统。</p>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>安装mavon-editor: npm install mavon-editor –save</p>
+<h3 id="引入、配置"><a href="#引入、配置" class="headerlink" title="引入、配置"></a>引入、配置</h3><p>这里选用的是局部配置，需要在使用到mavon-editor编辑器的组件内操作！</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123;mavonEditor&#125; <span class="keyword">from</span> <span class="string">'mavon-editor'</span>;<span class="comment">//导入组件</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">'mavon-editor/dist/css/index.css'</span><span class="comment">//引用样式</span></span><br></pre></td></tr></table></figure>
+<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">mavon-editor</span> <span class="attr">ref</span>=<span class="string">"editor"</span>  <span class="attr">style</span>=<span class="string">"max-height:420px"</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+<p>使用ref注册引用信息，引入的信息会注册在父组件的$refs的对象上</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> markdown = <span class="keyword">this</span>.$refs.editor.d_value;<span class="comment">//获取markdown文本</span></span><br><span class="line"><span class="keyword">let</span> html = <span class="keyword">this</span>.$refs.editor.d_render;<span class="comment">//获取的是html</span></span><br></pre></td></tr></table></figure>
+<p>获取到html文本保存入数据库中</p>
+<h3 id="将数据库中提取的html展示在页面上（我用的方法hhhhh）"><a href="#将数据库中提取的html展示在页面上（我用的方法hhhhh）" class="headerlink" title="将数据库中提取的html展示在页面上（我用的方法hhhhh）"></a>将数据库中提取的html展示在页面上（我用的方法hhhhh）</h3><p>同样需要引入mavon-editor并且配置</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;mavon-editor</span><br><span class="line">          <span class="class"><span class="keyword">class</span></span>=<span class="string">"md"</span></span><br><span class="line">          :value=<span class="string">"blog.content"</span> <span class="comment">//引入要转换的内容</span></span><br><span class="line">          :subfield = <span class="string">"false"</span> <span class="comment">//开启单栏模式</span></span><br><span class="line">          :defaultOpen = <span class="string">"'preview'"</span> <span class="comment">//默认展示预览区域</span></span><br><span class="line">          :toolbarsFlag = <span class="string">"false"</span> <span class="comment">//关闭工具栏</span></span><br><span class="line">          :editable=<span class="string">"false"</span> <span class="comment">//不允许编辑</span></span><br><span class="line">          :scrollStyle=<span class="string">"true"</span> <span class="comment">//开启滚动条样式</span></span><br><span class="line">          :ishljs = <span class="string">"true"</span> <span class="comment">//开启代码高亮</span></span><br><span class="line">       &gt;&lt;<span class="regexp">/mavon-editor&gt;</span></span><br></pre></td></tr></table></figure>
+<p>看看效果吧<del>~</del></p>
+<img src="/2020/02/27/%E5%9C%A8Vue%E4%B8%AD%E4%BD%BF%E7%94%A8Markdown%E7%BC%96%E8%BE%91%E5%99%A8/p3.PNG" class>
+<img src="/2020/02/27/%E5%9C%A8Vue%E4%B8%AD%E4%BD%BF%E7%94%A8Markdown%E7%BC%96%E8%BE%91%E5%99%A8/p1.PNG" class>
+<img src="/2020/02/27/%E5%9C%A8Vue%E4%B8%AD%E4%BD%BF%E7%94%A8Markdown%E7%BC%96%E8%BE%91%E5%99%A8/p2.PNG" class>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://ruanmanting.github.io/2020/02/27/%E5%9C%A8Vue%E4%B8%AD%E4%BD%BF%E7%94%A8Markdown%E7%BC%96%E8%BE%91%E5%99%A8/" data-id="ck74odp9r00024c579kg0bhnv" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-Vue项目中使用ECharts" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/02/20/Vue%E9%A1%B9%E7%9B%AE%E4%B8%AD%E4%BD%BF%E7%94%A8ECharts/" class="article-date">
@@ -106,7 +155,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://ruanmanting.github.io/2020/02/20/Vue%E9%A1%B9%E7%9B%AE%E4%B8%AD%E4%BD%BF%E7%94%A8ECharts/" data-id="ck6uipcgq0000so57eri9bgki" class="article-share-link">Share</a>
+      <a data-url="http://ruanmanting.github.io/2020/02/20/Vue%E9%A1%B9%E7%9B%AE%E4%B8%AD%E4%BD%BF%E7%94%A8ECharts/" data-id="ck74odp9h00004c574m6v2v7y" class="article-share-link">Share</a>
       
       
     </footer>
@@ -168,7 +217,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://ruanmanting.github.io/2020/02/20/%E4%BD%BF%E7%94%A8hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" data-id="ck6uipch00002so57az8e6olr" class="article-share-link">Share</a>
+      <a data-url="http://ruanmanting.github.io/2020/02/20/%E4%BD%BF%E7%94%A8hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" data-id="ck74odp9p00014c5742w6c5o3" class="article-share-link">Share</a>
       
       
     </footer>
@@ -217,7 +266,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://ruanmanting.github.io/2020/02/15/hello-world/" data-id="ck6uipcgy0001so57cog9b86g" class="article-share-link">Share</a>
+      <a data-url="http://ruanmanting.github.io/2020/02/15/hello-world/" data-id="ck74odp9s00034c57e6b90zdd" class="article-share-link">Share</a>
       
       
     </footer>
@@ -256,6 +305,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2020/02/27/%E5%9C%A8Vue%E4%B8%AD%E4%BD%BF%E7%94%A8Markdown%E7%BC%96%E8%BE%91%E5%99%A8/">在Vue中使用Markdown编辑器</a>
+          </li>
         
           <li>
             <a href="/2020/02/20/Vue%E9%A1%B9%E7%9B%AE%E4%B8%AD%E4%BD%BF%E7%94%A8ECharts/">Vue项目中使用ECharts</a>
